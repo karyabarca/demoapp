@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        DOCKER_CREDENTIALS_ID = 'docker-credentials' // Cambia esto al ID de tus credenciales Docker en Jenkins
-        DOCKER_IMAGE = 'tu-repositorio-docker/demoapp' // Cambia esto a tu repositorio Docker
+        DOCKER_CREDENTIALS_ID = 'karybarca' // Cambia esto al ID de tus credenciales Docker en Jenkins
+        DOCKER_IMAGE = 'karyabarca/demoapp' // Cambia esto a tu repositorio Docker
     }
     stages {
         stage('Build') {
