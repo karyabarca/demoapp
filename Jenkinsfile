@@ -1,6 +1,7 @@
 pipeline {
     agent any
     environment {
+        PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Program Files\\Docker\\Docker\\resources;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Windows\\System32;${env.PATH}"
         DOCKER_CREDENTIALS_ID = 'docker-credentials'
         DOCKER_IMAGE = 'karyabarca/demoapp'
     }
@@ -17,6 +18,7 @@ pipeline {
 
                     // Construir la imagen Docker
                     def customImage = docker.build("${DOCKER_IMAGE}:${env.BUILD_ID}")
+                    
                     // Subir la imagen a Docker Hub
                     docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_CREDENTIALS_ID}") {
                         customImage.push()
