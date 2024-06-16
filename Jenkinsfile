@@ -12,8 +12,9 @@ pipeline {
                     if (isUnix()) {
                         sh 'docker --version'
                     } else {
-                        bat 'docker --version'
+                        powershell 'docker --version'
                     }
+
                     // Construir la imagen Docker
                     def customImage = docker.build("${DOCKER_IMAGE}:${env.BUILD_ID}")
                     // Subir la imagen a Docker Hub
@@ -29,7 +30,7 @@ pipeline {
                     if (isUnix()) {
                         sh 'docker run -d -p 8000:8000 --name demoapp ${DOCKER_IMAGE}:${env.BUILD_ID}'
                     } else {
-                        bat 'docker run -d -p 8000:8000 --name demoapp ${DOCKER_IMAGE}:${env.BUILD_ID}'
+                        powershell 'docker run -d -p 8000:8000 --name demoapp ${DOCKER_IMAGE}:${env.BUILD_ID}'
                     }
                 }
             }
