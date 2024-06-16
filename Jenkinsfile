@@ -12,7 +12,7 @@ pipeline {
                     if (isUnix()) {
                         sh 'docker --version'
                     } else {
-                        powershell 'docker --version'
+                        bat 'docker --version'
                     }
 
                     // Construir la imagen Docker
@@ -30,7 +30,7 @@ pipeline {
                     if (isUnix()) {
                         sh 'docker run -d -p 8000:8000 --name demoapp ${DOCKER_IMAGE}:${env.BUILD_ID}'
                     } else {
-                        powershell 'docker run -d -p 8000:8000 --name demoapp ${DOCKER_IMAGE}:${env.BUILD_ID}'
+                        bat 'docker run -d -p 8000:8000 --name demoapp ${DOCKER_IMAGE}:${env.BUILD_ID}'
                     }
                 }
             }
