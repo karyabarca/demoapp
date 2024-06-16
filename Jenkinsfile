@@ -30,9 +30,9 @@ pipeline {
             steps {
                 script {
                     if (isUnix()) {
-                        sh 'docker run -d -p 8000:8000 --name demoapp ${DOCKER_IMAGE}:${env.BUILD_ID}'
+                        sh "docker run -d -p 8000:8000 --name demoapp ${DOCKER_IMAGE}:${env.BUILD_ID}"
                     } else {
-                        bat 'docker run -d -p 8000:8000 --name demoapp ${DOCKER_IMAGE}:${env.BUILD_ID}'
+                        bat "docker run -d -p 8000:8000 --name demoapp ${DOCKER_IMAGE}:${env.BUILD_ID}"
                     }
                 }
             }
