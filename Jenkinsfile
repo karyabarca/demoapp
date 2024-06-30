@@ -33,6 +33,14 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
+                    // Detener y eliminar cualquier contenedor existente con el nombre demoapp-container
+                    sh '''
+                    if [ $(docker ps -a -q -f name=demoapp-container) ]; then
+                        docker stop demoapp-container || true
+                        docker rm demoapp-container || true
+                    fi
+                    '''
+                    // Ejecutar el nuevo contenedor
                     sh 'docker run -d --name demoapp-container -p 5000:5000 demoapp'
                 }
             }
