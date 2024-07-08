@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/karyabarca/demoapp.git'
+                git credentialsId: 'github-credentials', url: 'https://github.com/karyabarca/demoapp.git'
             }
         }
         stage('Build') {
@@ -47,3 +47,4 @@ pipeline {
         }
     }
 }
+
